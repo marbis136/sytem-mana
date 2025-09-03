@@ -1,0 +1,29 @@
+npm install -D sass
+npm install chroma-js
+npm install react-chartjs-2 chart.js
+npm install stylis-plugin-rtl
+npm install @toolpad/core
+npm install @emotion/react 
+npm install @emotion/styled 
+npm install @fontsource/inter 
+npm install @fontsource/poppins 
+npm install @fontsource/roboto 
+npm install @mui/icons-material 
+npm install @mui/material 
+npm install @tabler/icons-react 
+npm install @vitejs/plugin-react 
+npm install apexcharts 
+npm install framer-motion 
+npm install lodash-es 
+npm install material-ui-popup-state 
+npm install react 
+npm install react-apexcharts 
+npm install react-dom 
+npm install react-perfect-scrollbar 
+npm install react-router 
+npm install react-router-dom 
+npm install slick-carousel 
+npm install swr 
+npm install vite 
+npm install vite-jsconfig-paths 
+npm install web-vitals yup
