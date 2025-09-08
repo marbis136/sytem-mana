@@ -26,37 +26,37 @@ const GestionVentas = {
       breadcrumbs: false
     },
     {
-      id: 'caja',
+      id: 'menu',
+      title: 'Menú',
+      type: 'item',
+      url: '/menu',
+      icon: icons.IconShoppingCart,
+      breadcrumbs: false
+    },
+    {
+      id: 'cajas',
       title: 'Caja',
       type: 'item',
-      url: '/page/caja',
+      url: '/cajas',
       icon: icons.IconTypography,
       breadcrumbs: false
     },
     {
-      id: 'util-color',
-      title: 'Color',
+      id: 'gastos',
+      title: 'Gastos',
       type: 'item',
-      url: '/color',
+      url: '/gastos',
       icon: icons.IconPalette,
       breadcrumbs: false
     },
     {
-      id: 'util-shadow',
-      title: 'Shadow',
+      id: 'pedidos',
+      title: 'Pedidos',
       type: 'item',
-      url: '/shadow',
+      url: '/pedidos',
       icon: icons.IconShadow,
       breadcrumbs: false
-    },
-    {
-      id: 'ventas',
-      title: 'Gestión de Ventas',
-      type: 'item',
-      url: '/ventas',
-      icon: icons.IconShoppingCart, // puedes cambiarlo por otro
-      breadcrumbs: false
-    },
+    },   
   ]
 };
 
