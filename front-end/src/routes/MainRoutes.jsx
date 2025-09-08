@@ -12,7 +12,6 @@ const MainRoutes = {
     </PrivateRoute>
   ),
   children: [
-    { index: true, element: <Dashboard /> },
     { path: "dashboard", element: <Dashboard /> },
     { path: "usuario", element: <Usuario /> },
     { path: "*", element: <ErrorPage /> }

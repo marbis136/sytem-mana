@@ -1,9 +1,12 @@
 import PrivateRoute from "../shared/PrivateRoute"; // ver abajo
 import AppLayout from "../views/layouts/AppLayout";      // opcional
 import Dashboard from "../views/pages/Dashboard";
-import Login from "../views/pages/Login"; 
-import Caja from "../views/pages/venta/caja";
-import Venta from "../views/pages/venta/Dashboard/navbar";
+import Caja from "../views/pages/GestionVenta/caja";
+import Venta from "../views/pages/GestionVenta/ventas";
+import Menu from "../views/pages/GestionVenta/menu";
+import Pedido from "../views/pages/GestionVenta/pedidos";
+import Gasto from "../views/pages/GestionVenta/gastos";
+
 
 
 const GestionVentas = {
@@ -16,8 +19,10 @@ const GestionVentas = {
   children: [
     { index: true, element: <Dashboard /> },
     { path: "ventas", element: <Venta /> },
-    { path: "caja", element: <Caja /> },
-    { path: "login", element: <Login /> },
+    { path: "menu", element: <Menu /> },
+    { path: "cajas", element: <Caja /> },
+    { path: "pedidos", element: <Pedido /> },
+    { path: "gastos", element: <Gasto /> },
   ],
 };
 
