@@ -1,37 +1,47 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+// src/auth/AuthContext.jsx
+import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
+
+const API_URL = `${import.meta.env.VITE_API_BASE}/api/auth/login/`;
+
+//const API_URL = "http://127.0.0.1:8000/api/auth/login/"; // ajusta si es necesario
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // null = no autenticado
+  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    // Recupera sesión simple (ejemplo) desde localStorage
-    const raw = localStorage.getItem("demo_user");
-    if (raw) setUser(JSON.parse(raw));
-  }, []);
+  async function login({ login, password }) {
+    const response = await fetch(`${API_URL}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ login, password }), // ⚠️ usa "login" porque así lo definiste en Django
+    });
 
-  const login = async ({ email, password }) => {
-    // DEMO: valida "cualquier" usuario si hay email y password
-    // Aquí normalmente llamarías a tu API
-    if (!email || !password) throw new Error("Email y password requeridos");
-    const demoUser = { email, name: "Usuario Demo" };
-    localStorage.setItem("demo_user", JSON.stringify(demoUser));
-    setUser(demoUser);
-  };
+    if (!response.ok) {
+      throw new Error("Credenciales inválidas");
+    }
 
-  const logout = () => {
-    localStorage.removeItem("demo_user");
+    const data = await response.json();
+    localStorage.setItem("access", data.access);
+    localStorage.setItem("refresh", data.refresh);
+
+    setUser({ login }); // opcional, podrías pedir más datos al backend
+    return data;
+  }
+
+  function logout() {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
     setUser(null);
-  };
+  }
 
-  const value = useMemo(() => ({ user, login, logout }), [user]);
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth debe usarse dentro de <AuthProvider>");
-  return ctx;
+  return useContext(AuthContext);
 }

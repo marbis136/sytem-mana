@@ -1,0 +1,42 @@
+***-- intalaciones para oython
+
+Crea un entorno virtual
+En la carpeta donde quieres crear tu entorno, ejecuta:
+python -m venv nombre_entorno
+
+
+para activate entorno virtual
+# venv\Scripts\activate
+
+Instala las dependencias desde requirements.txt
+Con el entorno activado, ejecuta:
+pip install -r requirements.txt
+
+
+Si luego agregas nuevas librerías y quieres actualizar tu requirements.txt, puedes hacerlo con:
+pip freeze > requirements.txt
+
+
+Crear un nuevo proyecto
+django-admin startproject ApiMana
+
+Aplicar migraciones
+Esto prepara tu base de datos según los modelos definidos en el proyecto:
+python manage.py migrate
+
+Si creaste modelos nuevos y aún no tienes migraciones:
+python manage.py makemigrations
+python manage.py migrate
+
+
+Correr el servidor
+python manage.py runserver
+
+
+para crear el proyecto structura
+# django-admin startproject nombre-del-proyecto
+
+entrar al nombre-del-proyecto
+
+para crear mas dentro de nombre-del-proyecto
+#py manage.py startapp nombre-referencia    para mas carpetas con structura

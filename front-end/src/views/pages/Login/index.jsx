@@ -15,7 +15,6 @@ import { useTheme } from "@mui/material/styles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-// 🔸 botón global de modo (usa ConfigContext por dentro)
 import ModeToggle from "../../layouts/components/ModeToggle";
 
 export default function Login() {
@@ -27,14 +26,21 @@ export default function Login() {
   const { state } = useLocation();
   const from = state?.from?.pathname || "/";
 
+  // 🔑 estados para username y password
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e?.preventDefault?.();
     setLoading(true);
     try {
-      await login({ email: "demo@demo.com", password: "demo" });
+      // 🔑 llamar a AuthContext pasando login y password
+      await login({ login: username, password });
       navigate(from, { replace: true });
+    } catch (err) {
+      console.error(err);
+      alert("Credenciales inválidas");
     } finally {
       setLoading(false);
     }
@@ -76,7 +82,6 @@ export default function Login() {
         transition: "all .3s ease"
       }}
     >
-      {/* Toggle global arriba-derecha */}
       <Box sx={{ position: "absolute", top: 16, right: 16 }}>
         <ModeToggle size="small" />
       </Box>
@@ -94,7 +99,6 @@ export default function Login() {
           boxShadow: colors.glow
         }}
       >
-        {/* Panel diagonal turquesa */}
         <Box
           aria-hidden
           sx={{
@@ -139,10 +143,13 @@ export default function Login() {
               Login
             </Typography>
 
+            {/* 🔑 Username controlado */}
             <TextField
               fullWidth
               variant="standard"
               label="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -153,11 +160,14 @@ export default function Login() {
               sx={underlineSx(colors)}
             />
 
+            {/* 🔑 Password controlado */}
             <TextField
               fullWidth
               variant="standard"
               type="password"
               label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
