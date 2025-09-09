@@ -28,13 +28,50 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
-    # Tus apps
+    # Autenticación / Usuarios
     'usuarios',
     'roles',
-    'almacenes',
+
+    # Gestión de sucursales y almacenes
     'sucursal',
     'tipo_almacen',
+    'almacenes',
+
+    # Estados generales
     'estados',
+
+    # RRHH
+    'personal',
+    'contratos',
+    'aguinaldos',
+    'finiquitos',
+    'horarios',
+    'asistencias',
+
+    # Inventario / Productos
+    'clasificacion',
+    'subclasificaciones',
+    'proveedores',
+    'insumos',
+    'productos',
+    'precios_productos',
+
+    # Menús (pizzas/platos)
+    'clasificaciones_menu',
+    'subclasificaciones_menu',
+    'menu',
+    'menu_producto',
+    'menu_precio',
+
+    # Clientes y Ventas
+    'clientes',
+    'promociones',
+    'cupones',
+    'puntos',
+    'cierres',
+    'ventas',
+    'facturas',
+    
 ]
 
 MIDDLEWARE = [
